@@ -1,0 +1,11 @@
+<div class="detail-card" *ngIf="pokemon">
+  <h3>{{ pokemon.name | titlecase }}</h3>
+  <img [src]="pokemon.sprites.front_default" [alt]="pokemon.name">
+  <p><strong>Altura:</strong> {{ pokemon.height }} dm</p>
+  <p><strong>Peso:</strong> {{ pokemon.weight }} hg</p>
+  <p><strong>Tipos:</strong> {{ typesString }}</p>
+</div>
+
+<div *ngIf="!pokemon" class="empty">
+  <p>Selecciona un Pokémon para ver detalles</p>
+</div>

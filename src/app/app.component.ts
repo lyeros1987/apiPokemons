@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'APP-Poke';
+  
+  hasDetail = false;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(() => {
+      this.hasDetail = this.router.url.includes('detail');
+    });
+  }
 }

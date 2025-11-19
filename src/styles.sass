@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+.main-container 
+  display: flex
+  height: calc(100vh - 70px)
+
+.sidebar 
+  flex: 1
+  padding: 1rem
+  border-right: 1px solid #ccc
+  overflow-y: auto
+
+.detail 
+  flex: 2
+  padding: 1rem
+  display: flex
+  flex-direction: column
+  justify-content: flex-start
+  gap: 2rem
+  min-height: 100%
+
+
+app-summary-table
+  padding: 0.8rem
+  border: 1px solid #ddd
+  background: #fafafa
+  border-radius: 4px
+  margin-top: auto
+
+
+app-favorites 
+  position: fixed
+  top: 70px
+  width: 100%
+  padding: 0.5rem 1rem
+  background-color: #f3f3f3
+  border-bottom: 1px solid #ccc

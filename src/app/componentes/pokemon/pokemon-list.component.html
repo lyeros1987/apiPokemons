@@ -1,0 +1,43 @@
+<div class="list-container">
+  <h2>Pokémon List</h2>
+
+  <input pInputText
+         [formControl]="filterControl"
+         placeholder="Type 3+ letters to search..."
+         class="search-input">
+
+  <p-table [value]="pokemons"
+           [lazy]="true"
+           (onLazyLoad)="onPageChange($event)"
+           [paginator]="true"
+           [rows]="limit"
+           [totalRecords]="totalRecords"
+           [loading]="loading"
+           [first]="first">
+
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-pokemon>
+      <tr>
+        <td>{{ pokemon.name | titlecase }}</td>
+        <td class="actions">
+  <button pButton
+        type="button"
+        [icon]="isFavorite(pokemon) ? 'pi pi-heart-fill' : 'pi pi-heart'"
+        [class.p-button-danger]="isFavorite(pokemon)"
+        class="p-button-text p-button-rounded"
+        (click)="toggleFavorite(pokemon, $event)"
+        pTooltip="Favorito">
+</button>
+
+  <button pButton label="Ver" (click)="onViewDetail(pokemon)" class="ml-2"></button>
+</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

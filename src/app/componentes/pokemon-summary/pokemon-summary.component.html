@@ -1,0 +1,9 @@
+<div class="summary-title">
+  <h3>Resumen A-Z</h3>
+</div>
+
+<div class="summary-grid" *ngIf="summary$ | async as summary">
+  <div class="letter-box" *ngFor="let letter of letters">
+    <strong>{{ letter }}:</strong> {{ summary[letter] || 0 }}
+  </div>
+</div>

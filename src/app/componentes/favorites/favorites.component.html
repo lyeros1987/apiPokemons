@@ -1,0 +1,14 @@
+<div class="fav-item" *ngFor="let p of favorites">
+  <!-- CLIC → MUESTRA DETALLE A LA DERECHA -->
+  <div class="clickable" (click)="onFavoriteClick(p)">
+    <img [src]="p.sprites?.front_default || (p.url | pokemonImage)" 
+         class="fav-img" [alt]="p.name">
+    <small class="fav-name">{{ p.name | titlecase }}</small>
+  </div>
+
+  <button pButton 
+          icon="pi pi-times" 
+          class="p-button-danger p-button-text p-button-sm"
+          (click)="removeFavorite(p, $event)">
+  </button>
+</div>
