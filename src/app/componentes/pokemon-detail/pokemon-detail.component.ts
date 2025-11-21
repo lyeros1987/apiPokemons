@@ -10,7 +10,7 @@ import { PokemonService } from 'src/app/services/pokemon.service';
   styleUrls: ['./pokemon-detail.component.sass']
 })
 export class PokemonDetailComponent {
- pokemon?: PokemonDetail;
+ pokemon: PokemonDetail | null = null;
   typesString = '';  // ← NUEVO: cadena lista para mostrar
   private destroy$ = new Subject<void>();
 
@@ -31,6 +31,7 @@ export class PokemonDetailComponent {
         }
       });
   }
+  
 
   ngOnDestroy() {
     this.destroy$.next();

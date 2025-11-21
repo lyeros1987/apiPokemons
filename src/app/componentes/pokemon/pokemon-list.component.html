@@ -1,19 +1,23 @@
 <div class="list-container">
   <h2>Pokémon List</h2>
 
-  <input pInputText
-         [formControl]="filterControl"
-         placeholder="Type 3+ letters to search..."
-         class="search-input">
+  <input type="text" 
+    pInputText 
+    [formControl]="filterControl" 
+    placeholder="Buscar Pokémon (mín. 3 letras)" 
+    class="w-full mb-4" />
 
-  <p-table [value]="pokemons"
-           [lazy]="true"
-           (onLazyLoad)="onPageChange($event)"
-           [paginator]="true"
-           [rows]="limit"
-           [totalRecords]="totalRecords"
-           [loading]="loading"
-           [first]="first">
+
+  <p-table 
+   [value]="(pokemons$ | async) || []"
+    [lazy]="true"
+    (onLazyLoad)="onPageChange($event)"
+    [paginator]="true"
+    [rows]="limit"
+    [totalRecords]="(totalRecords$ | async) ?? 0"
+    [loading]="(loading$ | async) ?? true"
+    [first]="(first$ | async) ?? 0"
+    [tableStyle]="{ 'min-width': '50rem' }">
 
     <ng-template pTemplate="header">
       <tr>
